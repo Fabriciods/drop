@@ -9,7 +9,7 @@ fun main() {
     Lwjgl3Application(Main(), Lwjgl3ApplicationConfiguration().apply {
         setTitle("drop")
         useVsync(true)
-        setForegroundFPS(Lwjgl3ApplicationConfiguration.getDisplayMode().refreshRate)
+        setForegroundFPS(60)
         setWindowedMode(640, 480)
         setWindowIcon(
             "libgdx128.png",
