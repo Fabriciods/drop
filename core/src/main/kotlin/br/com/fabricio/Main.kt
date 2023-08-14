@@ -26,6 +26,7 @@ class Main : ApplicationAdapter() {
     private lateinit var bucket: Rectangle
     private lateinit var rainDrops: Array<Rectangle>
     private var lastDropTime: Long = 0
+    private lateinit var touchPos: Vector3
     override fun create() {
         camera = OrthographicCamera()
         camera.setToOrtho(false, 800f, 400f)
@@ -60,9 +61,8 @@ class Main : ApplicationAdapter() {
         }
         batch.end()
         if (Gdx.input.isTouched) {
-            val touchPos = Vector3()
             touchPos.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat(), 0f)
-            camera.unproject(touchPos)
+            camera.unproject(touchPos) //converte as coordenadas do toque em coordenadas da camera
             bucket.x = touchPos.x - (64 / 2)
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) bucket.x -= 200 * Gdx.graphics.deltaTime
